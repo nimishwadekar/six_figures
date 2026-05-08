@@ -1,3 +1,6 @@
+// Application entry point: initialises Hive storage and launches MaterialApp
+// with the SereneLedgerShell as the root.
+
 import 'package:flutter/material.dart';
 
 import 'app_theme.dart';

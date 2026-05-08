@@ -1,3 +1,7 @@
+// Singleton-style facade around Hive: handles one-time initialisation,
+// adapter registration, and exposes the open Expense box used throughout
+// the app for persistence.
+
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../models/expense.dart';

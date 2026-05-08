@@ -1,3 +1,7 @@
+// Hive-persisted Expense model. Stores amount as integer cents to avoid
+// floating-point error and exposes helpers to format/parse the display
+// representation. The generated adapter lives in expense.g.dart.
+
 import 'package:hive/hive.dart';
 
 part 'expense.g.dart';

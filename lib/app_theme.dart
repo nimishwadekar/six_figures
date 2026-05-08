@@ -1,3 +1,7 @@
+// Defines the application's visual identity: the AppPalette colour tokens
+// and the Material 3 ThemeData (colour scheme, typography, component
+// themes) consumed by MaterialApp.
+
 import 'package:flutter/material.dart';
 
 /// Canonical colours for Six Figures. Extend here as the palette grows.
