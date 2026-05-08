@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings - Serene Ledger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"tertiary-container": "#6f757c", "on-primary-container": "#f3fffe", "on-error-container": "#93000a", "on-secondary-container": "#54647a", tertiary: "#565d63", outline: "#6e7979", "inverse-primary": "#7dd5d4", "primary-container": "#1d8181", surface: "#faf8ff", "on-surface": "#131b2e", "inverse-surface": "#283044", primary: "#006767", "secondary-fixed-dim": "#b7c8e1", "secondary-container": "#d0e1fb", "on-tertiary": "#ffffff", "on-primary": "#ffffff", "surface-container": "#eaedff", "outline-variant": "#bdc9c8", "surface-bright": "#faf8ff", "inverse-on-surface": "#eef0ff", "on-tertiary-fixed-variant": "#41474e", "primary-fixed": "#99f1f1", "on-primary-fixed": "#002020", "surface-tint": "#006a6a", "on-background": "#131b2e", "surface-container-high": "#e2e7ff", "on-secondary-fixed": "#0b1c30", "tertiary-fixed-dim": "#c1c7cf", "on-error": "#ffffff", "tertiary-fixed": "#dde3eb", "surface-container-highest": "#dae2fd", "error-container": "#ffdad6", "surface-variant": "#dae2fd", "surface-dim": "#d2d9f4", "on-secondary-fixed-variant": "#38485d", "surface-container-low": "#f2f3ff", "secondary-fixed": "#d3e4fe", secondary: "#505f76", "on-tertiary-container": "#fcfcff", "on-secondary": "#ffffff", "primary-fixed-dim": "#7dd5d4", "on-primary-fixed-variant": "#004f50", error: "#ba1a1a", "on-tertiary-fixed": "#161c22", background: "#faf8ff", "surface-container-lowest": "#ffffff", "on-surface-variant": "#3e4948"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}, spacing: {"card-padding": "20px", "stack-gap": "16px", "element-gap": "8px", "grid-gutter": "12px", "container-margin": "20px"}, fontFamily: {h2: ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], h1: ["Plus Jakarta Sans"], "display-currency": ["Plus Jakarta Sans"], "data-tabular": ["Plus Jakarta Sans"], "label-caps": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], headline: ["Plus Jakarta Sans"], display: ["Plus Jakarta Sans"], body: ["Plus Jakarta Sans"], label: ["Plus Jakarta Sans"]}, fontSize: {h2: ["20px", {lineHeight: "28px", fontWeight: "600"}], "body-lg": ["16px", {lineHeight: "24px", fontWeight: "400"}], h1: ["24px", {lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "600"}], "display-currency": ["36px", {lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "700"}], "data-tabular": ["15px", {lineHeight: "20px", fontWeight: "500"}], "label-caps": ["12px", {lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "700"}], "body-md": ["14px", {lineHeight: "20px", fontWeight: "400"}]}}}};</script>
+<style>
+        body {
+            background-color: #faf8ff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #131b2e;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-card {
+            box-shadow: 0 4px 20px 0 rgba(0, 106, 106, 0.04);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-slate-50/80 backdrop-blur-md border-b border-slate-200/50 shadow-sm fixed top-0 z-50 w-full">
+<div class="flex items-center justify-between px-5 h-16 w-full max-w-7xl mx-auto">
+<button class="text-teal-600 active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+<h1 class="text-xl font-extrabold text-teal-600 tracking-tighter">ExpenseTracker</h1>
+<button class="text-teal-600 active:scale-95 duration-200 font-bold">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-12 px-container-margin max-w-2xl mx-auto">
+<div class="flex flex-col gap-stack-gap">
+<!-- Profile Section -->
+<section>
+<h2 class="font-h2 text-h2 mb-element-gap text-on-surface">Account</h2>
+<div class="bg-surface-container-lowest rounded-xl p-card-padding tonal-card flex items-center gap-4">
+<div class="relative">
+<img alt="Profile photo" class="w-16 h-16 rounded-full object-cover border-2 border-primary-container/20" data-alt="portrait of a confident young man with a slight smile in soft studio lighting against a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBD0Tefgww4v5nsEausfOunTo1cPZYv-8OxOwvgiYOWPuOwdd4BVCkpce4AQnZ0u4PTOd-R9vl0fjaj3V1Z7C2R5fvqv3plmnl8qUfCi5DWVS7gD1ABhXMMlemTa95vaOew6cZNdBsTJrPiLjxQt-npNkHs1H9nLfO-65EMUqo9flbSOJJNJS1fZRXZIRxbyWUVDOBcTlflGA0TOe9LXBZb7AJZf6D7QRn7mDfvopg83XuHctEBcc-myi-HcW_uVL2Ysw_hZVUZWX4"/>
+<div class="absolute bottom-0 right-0 bg-primary w-5 h-5 rounded-full border-2 border-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-white" style="font-variation-settings: 'FILL' 1;">edit</span>
+</div>
+</div>
+<div>
+<p class="font-h2 text-h2 text-on-surface">Julian Thorne</p>
+<p class="font-body-md text-body-md text-on-surface-variant">julian.thorne@serene.io</p>
+</div>
+<button class="ml-auto text-primary p-2 hover:bg-primary-container/10 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Preferences Section -->
+<section class="flex flex-col gap-element-gap">
+<h2 class="font-h2 text-h2 text-on-surface">Preferences</h2>
+<div class="bg-surface-container-lowest rounded-xl tonal-card overflow-hidden">
+<!-- Default Currency -->
+<div class="p-card-padding flex items-center justify-between border-b border-outline-variant/20">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-secondary-container/30 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg text-on-surface">Default Currency</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">USD - US Dollar</p>
+</div>
+</div>
+<div class="relative min-w-[100px]">
+<select class="appearance-none w-full bg-surface-container-low border border-outline-variant/30 rounded-lg px-4 py-2 pr-10 font-label-caps text-primary focus:ring-2 focus:ring-primary focus:border-transparent outline-none cursor-pointer">
+<option selected="">USD</option>
+<option>EUR</option>
+<option>JPY</option>
+<option>GBP</option>
+<option>CAD</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+<span class="material-symbols-outlined text-primary text-xl">keyboard_arrow_down</span>
+</div>
+</div>
+</div>
+<!-- Dark Mode Toggle -->
+<div class="p-card-padding flex items-center justify-between border-b border-outline-variant/20">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-secondary-container/30 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg text-on-surface">Dark Mode</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Current: Light Mode</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Theme/Color Selection -->
+<div class="p-card-padding flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-secondary-container/30 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="palette">palette</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg text-on-surface">App Theme</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Serene Teal (Default)</p>
+</div>
+</div>
+<div class="flex gap-2">
+<div class="w-6 h-6 rounded-full bg-[#006767] ring-2 ring-offset-2 ring-primary"></div>
+<div class="w-6 h-6 rounded-full bg-blue-600"></div>
+<div class="w-6 h-6 rounded-full bg-rose-500"></div>
+<div class="w-6 h-6 rounded-full bg-amber-500"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Data Sync Section -->
+<section class="flex flex-col gap-element-gap">
+<div class="flex items-center justify-between">
+<h2 class="font-h2 text-h2 text-on-surface">Cloud Integration</h2>
+<span class="px-2 py-1 bg-teal-50 text-teal-600 text-[10px] font-bold rounded uppercase tracking-wider">Experimental</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-card-padding tonal-card">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 rounded-xl bg-[#e6f4ea] flex items-center justify-center">
+<svg class="w-7 h-7" fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.5 10H9.5V14.5H14.5V10Z" fill="#0F9D58"></path>
+<path d="M21 5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5ZM19 19H5V5H19V19Z" fill="#0F9D58"></path>
+<path d="M16.5 7H7.5V17H16.5V7ZM14.5 14.5H9.5V10H14.5V14.5Z" fill="#0F9D58"></path>
+</svg>
+</div>
+<div class="flex-1">
+<p class="font-body-lg text-body-lg text-on-surface">Google Sheets Sync</p>
+<p class="font-label-caps text-label-caps text-primary">Connected</p>
+</div>
+<button class="bg-primary text-white font-label-caps px-4 py-2 rounded-full hover:shadow-lg active:scale-95 transition-all">
+                            SYNC NOW
+                        </button>
+</div>
+<div class="space-y-4">
+<div>
+<label class="font-label-caps text-on-surface-variant block mb-1">Spreadsheet URL</label>
+<div class="relative">
+<input class="w-full bg-surface-container/50 border-none rounded-lg font-data-tabular text-body-md py-3 pl-4 pr-10 focus:ring-primary" readonly="" type="text" value="docs.google.com/spreadsheets/d/1x8v...2a1"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">link</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">history</span>
+<span class="font-label-caps">Last synced: 2 minutes ago</span>
+</div>
+<button class="text-primary font-label-caps hover:underline">Change Sheet</button>
+</div>
+</div>
+</div>
+</section>
+<!-- General Options -->
+<section class="flex flex-col gap-element-gap">
+<h2 class="font-h2 text-h2 text-on-surface">General</h2>
+<div class="bg-surface-container-lowest rounded-xl tonal-card divide-y divide-outline-variant/10">
+<button class="w-full p-card-padding flex items-center justify-between hover:bg-surface-container-low transition-colors text-left">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-secondary-container/30 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg text-on-surface">Notifications</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Daily reminders, budget alerts</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</button>
+<button class="w-full p-card-padding flex items-center justify-between hover:bg-surface-container-low transition-colors text-left">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-secondary-container/30 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg text-on-surface">Privacy &amp; Security</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">FaceID, Data Export, Lock screen</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</button>
+<button class="w-full p-card-padding flex items-center justify-between hover:bg-surface-container-low transition-colors text-left">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-secondary-container/30 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg text-on-surface">Help &amp; Support</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Documentation, Contact support</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Danger Zone -->
+<section class="mt-4">
+<button class="w-full py-4 px-card-padding bg-error-container/20 text-error rounded-xl font-body-lg font-semibold flex items-center justify-center gap-2 hover:bg-error-container/30 transition-colors">
+<span class="material-symbols-outlined">logout</span>
+                    Sign Out
+                </button>
+<p class="text-center mt-6 font-label-caps text-on-surface-variant opacity-60">Version 2.4.1 (Build 890) • Serene Ledger App</p>
+</section>
+</div>
+</main>
+<!-- Suppressing BottomNavBar for this task-focused settings screen as per 'Destinations Rule' -->
+</body></html>

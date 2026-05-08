@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"surface-container": "#eaedff", "on-primary-fixed-variant": "#004f50", "on-tertiary": "#ffffff", "on-secondary-container": "#54647a", "surface-bright": "#faf8ff", "tertiary-fixed-dim": "#c1c7cf", "secondary-fixed": "#d3e4fe", "primary-fixed-dim": "#7dd5d4", "on-surface-variant": "#3e4948", "surface-variant": "#dae2fd", "on-primary": "#ffffff", "on-error": "#ffffff", "surface-container-low": "#f2f3ff", "primary-container": "#1d8181", "on-surface": "#131b2e", "surface-container-lowest": "#ffffff", "on-primary-fixed": "#002020", "on-primary-container": "#f3fffe", "secondary-container": "#d0e1fb", "on-secondary-fixed-variant": "#38485d", "secondary-fixed-dim": "#b7c8e1", primary: "#006767", secondary: "#505f76", "surface-container-high": "#e2e7ff", "surface-dim": "#d2d9f4", "on-secondary-fixed": "#0b1c30", "on-background": "#131b2e", "outline-variant": "#bdc9c8", background: "#faf8ff", "on-tertiary-container": "#fcfcff", "on-error-container": "#93000a", "surface-tint": "#006a6a", "tertiary-fixed": "#dde3eb", surface: "#faf8ff", "on-secondary": "#ffffff", "inverse-surface": "#283044", "on-tertiary-fixed-variant": "#41474e", "inverse-on-surface": "#eef0ff", "on-tertiary-fixed": "#161c22", "error-container": "#ffdad6", "surface-container-highest": "#dae2fd", "inverse-primary": "#7dd5d4", "tertiary-container": "#6f757c", outline: "#6e7979", error: "#ba1a1a", "primary-fixed": "#99f1f1", tertiary: "#565d63"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}, spacing: {"stack-gap": "16px", "card-padding": "20px", "element-gap": "8px", "container-margin": "20px", "grid-gutter": "12px"}, fontFamily: {"display-currency": ["Plus Jakarta Sans"], h1: ["Plus Jakarta Sans"], "data-tabular": ["Plus Jakarta Sans"], "label-caps": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], h2: ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], headline: ["Plus Jakarta Sans"], display: ["Plus Jakarta Sans"], body: ["Plus Jakarta Sans"], label: ["Plus Jakarta Sans"]}, fontSize: {"display-currency": ["36px", {lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "700"}], h1: ["24px", {lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "600"}], "data-tabular": ["15px", {lineHeight: "20px", fontWeight: "500"}], "label-caps": ["12px", {lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "700"}], "body-md": ["14px", {lineHeight: "20px", fontWeight: "400"}], h2: ["20px", {lineHeight: "28px", fontWeight: "600"}], "body-lg": ["16px", {lineHeight: "24px", fontWeight: "400"}]}}}};</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #faf8ff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .tonal-elevation {
+            box-shadow: 0 4px 20px 0 rgba(0, 103, 103, 0.04);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="bg-slate-50/80 backdrop-blur-md border-b border-slate-200/50 shadow-sm fixed top-0 z-50 w-full">
+<div class="flex items-center justify-between px-5 h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-teal-600">account_circle</span>
+<h1 class="text-xl font-extrabold text-teal-600 tracking-tighter">ExpenseTracker</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-teal-600">settings</span>
+</div>
+</div>
+</header>
+<main class="mt-20 px-5 max-w-7xl mx-auto space-y-stack-gap">
+<!-- Header Section -->
+<section class="py-4">
+<h2 class="font-h1 text-h1 text-on-surface">Wallets &amp; Rates</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage your travel funds and live conversion rates.</p>
+</section>
+<!-- Summary Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-grid-gutter">
+<!-- Total Balance Card -->
+<div class="md:col-span-2 bg-white p-card-padding rounded-xl tonal-elevation border border-slate-100 flex flex-col justify-between overflow-hidden relative">
+<div class="relative z-10">
+<span class="font-label-caps text-label-caps text-on-secondary-container uppercase">Estimated Total Balance</span>
+<div class="mt-2 flex items-baseline gap-1">
+<span class="font-display-currency text-display-currency text-primary">$</span>
+<span class="font-display-currency text-display-currency text-primary">12,450.00</span>
+</div>
+</div>
+<div class="mt-6 flex gap-4 relative z-10">
+<button class="flex-1 bg-primary text-on-primary py-3 px-4 rounded-full font-label-caps text-label-caps flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+                        NEW WALLET
+                    </button>
+<button class="flex-1 bg-secondary-container text-on-secondary-container py-3 px-4 rounded-full font-label-caps text-label-caps flex items-center justify-center gap-2 hover:bg-secondary-fixed transition-all">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+                        REFRESH RATES
+                    </button>
+</div>
+<!-- Abstract decorative shape -->
+<div class="absolute -right-10 -bottom-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl"></div>
+</div>
+<!-- Currency Insight Card -->
+<div class="bg-primary-container text-on-primary-container p-card-padding rounded-xl tonal-elevation flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-4xl mb-2" style="font-variation-settings: 'FILL' 1;">trending_down</span>
+<p class="font-body-md text-body-md opacity-90">JPY is currently at a 3-month low</p>
+<span class="font-label-caps text-label-caps mt-2 px-3 py-1 bg-white/10 rounded-full">GOOD TIME TO BUY</span>
+</div>
+</div>
+<!-- Wallets List -->
+<section class="space-y-element-gap">
+<div class="flex items-center justify-between px-1">
+<h3 class="font-h2 text-h2 text-on-surface">Active Wallets</h3>
+<span class="font-body-md text-body-md text-primary font-semibold">4 Entries</span>
+</div>
+<!-- Wallet Item 1 -->
+<div class="bg-white p-card-padding rounded-xl tonal-elevation border border-slate-100 flex items-center justify-between group hover:border-primary/20 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center">
+<span class="text-xl font-bold text-on-surface">€</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="font-h2 text-body-lg text-on-surface">Euro Wallet</h4>
+<span class="font-label-caps text-[10px] px-2 py-0.5 bg-teal-50 text-teal-700 rounded-md">MAIN</span>
+</div>
+<p class="font-data-tabular text-data-tabular text-on-surface-variant">1 EUR = 1.08 USD</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-display-currency text-h2 text-on-surface">€2,400.00</p>
+<div class="w-24 h-1.5 bg-slate-100 rounded-full mt-2 overflow-hidden">
+<div class="bg-primary h-full w-[75%] rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Wallet Item 2 -->
+<div class="bg-white p-card-padding rounded-xl tonal-elevation border border-slate-100 flex items-center justify-between group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center">
+<span class="text-xl font-bold text-on-surface">¥</span>
+</div>
+<div>
+<h4 class="font-h2 text-body-lg text-on-surface">Yen Travel Fund</h4>
+<p class="font-data-tabular text-data-tabular text-on-surface-variant">1 JPY = 0.0067 USD</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-display-currency text-h2 text-on-surface">¥150,000</p>
+<div class="w-24 h-1.5 bg-slate-100 rounded-full mt-2 overflow-hidden">
+<div class="bg-primary h-full w-[40%] rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Wallet Item 3 -->
+<div class="bg-white p-card-padding rounded-xl tonal-elevation border border-slate-100 flex items-center justify-between group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center">
+<span class="text-xl font-bold text-on-surface">£</span>
+</div>
+<div>
+<h4 class="font-h2 text-body-lg text-on-surface">British Pound</h4>
+<p class="font-data-tabular text-data-tabular text-on-surface-variant">1 GBP = 1.27 USD</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-display-currency text-h2 text-on-surface">£850.00</p>
+<div class="w-24 h-1.5 bg-slate-100 rounded-full mt-2 overflow-hidden">
+<div class="bg-primary h-full w-[15%] rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Empty Wallet State / Minimal Rate Only -->
+<div class="bg-white p-card-padding rounded-xl tonal-elevation border border-slate-100 border-dashed flex items-center justify-between opacity-70">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-slate-50 rounded-lg flex items-center justify-center">
+<span class="text-xl font-bold text-slate-400">฿</span>
+</div>
+<div>
+<h4 class="font-h2 text-body-lg text-slate-500">Thai Baht</h4>
+<p class="font-data-tabular text-data-tabular text-slate-400">1 THB = 0.028 USD</p>
+</div>
+</div>
+<div class="text-right">
+<button class="text-primary font-label-caps text-label-caps hover:underline">SET BALANCE</button>
+</div>
+</div>
+</section>
+<!-- Transaction Note -->
+<div class="bg-surface-container-low p-card-padding rounded-xl flex gap-3">
+<span class="material-symbols-outlined text-primary">info</span>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Expenses logged under these wallets will automatically deduct from the remaining balance using the fixed rate established at the time of entry.
+            </p>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full h-20 flex justify-around items-center px-4 pb-safe bg-white/90 backdrop-blur-lg border-t border-slate-100 z-50">
+<div class="flex flex-col items-center justify-center text-slate-400 px-3 py-1 hover:text-teal-500 transition-colors">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-medium">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 px-3 py-1 hover:text-teal-500 transition-colors">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-medium">Log</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 px-3 py-1">
+<div class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center text-teal-600 bg-teal-50 rounded-xl px-3 py-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-medium">Wallets</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 px-3 py-1 hover:text-teal-500 transition-colors">
+<span class="material-symbols-outlined">sell</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-medium">Tags</span>
+</div>
+</nav>
+</body></html>
