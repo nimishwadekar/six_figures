@@ -1,112 +1,109 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   AppTheme._();
 
+  /// Warm bone surfaces + pink accent (Entries reference / TravelSpend-like).
   static ThemeData get light {
-    final colorScheme = ColorScheme.fromSeed(
-      seedColor: const Color(0xFF006767),
+    const accentPink = Color(0xFFE91E63);
+    const surfaceWarm = Color(0xFFF7F4EF);
+    const surfaceNav = Color(0xFFF0E8E6);
+    const surfaceBand = Color(0xFFEAE6DF);
+    const onSurfaceMain = Color(0xFF1A1A1A);
+    const onSurfaceMuted = Color(0xFF6B6B6B);
+
+    final colorScheme = ColorScheme(
       brightness: Brightness.light,
-    ).copyWith(
-      primary: const Color(0xFF006767),
-      onPrimary: const Color(0xFFFFFFFF),
-      primaryContainer: const Color(0xFF1D8181),
-      onPrimaryContainer: const Color(0xFFF3FFFE),
-      secondary: const Color(0xFF505F76),
-      onSecondary: const Color(0xFFFFFFFF),
-      secondaryContainer: const Color(0xFFD0E1FB),
-      onSecondaryContainer: const Color(0xFF54647A),
-      tertiary: const Color(0xFF565D63),
-      onTertiary: const Color(0xFFFFFFFF),
-      tertiaryContainer: const Color(0xFF6F757C),
-      onTertiaryContainer: const Color(0xFFFCFCFF),
-      error: const Color(0xFFBA1A1A),
-      onError: const Color(0xFFFFFFFF),
-      errorContainer: const Color(0xFFFFDAD6),
-      onErrorContainer: const Color(0xFF93000A),
-      surface: const Color(0xFFFAF8FF),
-      onSurface: const Color(0xFF131B2E),
-      onSurfaceVariant: const Color(0xFF3E4948),
-      outline: const Color(0xFF6E7979),
-      outlineVariant: const Color(0xFFBDC9C8),
-      shadow: const Color(0x14006767),
-      scrim: const Color(0x66000000),
-      inverseSurface: const Color(0xFF283044),
-      onInverseSurface: const Color(0xFFEEF0FF),
-      inversePrimary: const Color(0xFF7DD5D4),
-      surfaceTint: const Color(0xFF006A6A),
-      // New Material 3 tonal surfaces from DESIGN.md
-      surfaceDim: const Color(0xFFD2D9F4),
-      surfaceBright: const Color(0xFFFAF8FF),
-      surfaceContainerLowest: const Color(0xFFFFFFFF),
-      surfaceContainerLow: const Color(0xFFF2F3FF),
-      surfaceContainer: const Color(0xFFEAEDFF),
-      surfaceContainerHigh: const Color(0xFFE2E7FF),
-      surfaceContainerHighest: const Color(0xFFDAE2FD),
-      // Fixed colors from DESIGN.md
-      primaryFixed: const Color(0xFF99F1F1),
-      primaryFixedDim: const Color(0xFF7DD5D4),
-      onPrimaryFixed: const Color(0xFF002020),
-      onPrimaryFixedVariant: const Color(0xFF004F50),
-      secondaryFixed: const Color(0xFFD3E4FE),
-      secondaryFixedDim: const Color(0xFFB7C8E1),
-      onSecondaryFixed: const Color(0xFF0B1C30),
-      onSecondaryFixedVariant: const Color(0xFF38485D),
-      tertiaryFixed: const Color(0xFFDDE3EB),
-      tertiaryFixedDim: const Color(0xFFC1C7CF),
-      onTertiaryFixed: const Color(0xFF161C22),
-      onTertiaryFixedVariant: const Color(0xFF41474E),
+      primary: accentPink,
+      onPrimary: Colors.white,
+      primaryContainer: Color(0xFFFCE4EC),
+      onPrimaryContainer: Color(0xFF880E4F),
+      secondary: Color(0xFF5C5C5C),
+      onSecondary: Colors.white,
+      secondaryContainer: Color(0xFFE8E8E8),
+      onSecondaryContainer: Color(0xFF2C2C2C),
+      tertiary: Color(0xFF6D6D6D),
+      onTertiary: Colors.white,
+      tertiaryContainer: surfaceBand,
+      onTertiaryContainer: onSurfaceMain,
+      error: Color(0xFFBA1A1A),
+      onError: Colors.white,
+      errorContainer: Color(0xFFFFDAD6),
+      onErrorContainer: Color(0xFF93000A),
+      surface: surfaceWarm,
+      onSurface: onSurfaceMain,
+      onSurfaceVariant: onSurfaceMuted,
+      outline: Color(0xFFBDB5AD),
+      outlineVariant: Color(0xFFE0D8CE),
+      shadow: Color(0x1A000000),
+      scrim: Color(0x66000000),
+      inverseSurface: Color(0xFF2C2C2C),
+      onInverseSurface: Color(0xFFF5F5F5),
+      inversePrimary: Color(0xFFF48FB1),
+      surfaceTint: Colors.transparent,
+      surfaceDim: Color(0xFFE8E0D8),
+      surfaceBright: Color(0xFFFCFAF6),
+      surfaceContainerLowest: Colors.white,
+      surfaceContainerLow: Color(0xFFF2EDE6),
+      surfaceContainer: Color(0xFFEDE7DF),
+      surfaceContainerHigh: surfaceBand,
+      surfaceContainerHighest: Color(0xFFDED8CF),
+      primaryFixed: Color(0xFFFCE4EC),
+      primaryFixedDim: Color(0xFFF8BBD0),
+      onPrimaryFixed: Color(0xFF4A0020),
+      onPrimaryFixedVariant: Color(0xFFAD1457),
+      secondaryFixed: Color(0xFFE0E0E0),
+      secondaryFixedDim: Color(0xFFBDBDBD),
+      onSecondaryFixed: Color(0xFF1A1A1A),
+      onSecondaryFixedVariant: Color(0xFF424242),
+      tertiaryFixed: surfaceBand,
+      tertiaryFixedDim: Color(0xFFD7D0C6),
+      onTertiaryFixed: onSurfaceMain,
+      onTertiaryFixedVariant: onSurfaceMuted,
     );
 
     final baseTextTheme = ThemeData(brightness: Brightness.light).textTheme;
-    final textTheme = GoogleFonts.plusJakartaSansTextTheme(baseTextTheme)
-        .copyWith(
-      // display-currency
-      displayLarge: GoogleFonts.plusJakartaSans(
-        fontSize: 36,
+    final textTheme = baseTextTheme.copyWith(
+      displayLarge: baseTextTheme.displayLarge?.copyWith(
+        fontSize: 32,
         fontWeight: FontWeight.w700,
-        height: 44 / 36,
-        letterSpacing: -0.72, // -0.02em
+        height: 1.25,
       ),
-      // h1
-      headlineLarge: GoogleFonts.plusJakartaSans(
+      headlineLarge: baseTextTheme.headlineLarge?.copyWith(
         fontSize: 24,
         fontWeight: FontWeight.w600,
-        height: 32 / 24,
-        letterSpacing: -0.24, // -0.01em
+        height: 1.3,
       ),
-      // h2
-      headlineMedium: GoogleFonts.plusJakartaSans(
+      headlineMedium: baseTextTheme.headlineMedium?.copyWith(
         fontSize: 20,
         fontWeight: FontWeight.w600,
-        height: 28 / 20,
+        height: 1.3,
       ),
-      // body-lg
-      bodyLarge: GoogleFonts.plusJakartaSans(
+      bodyLarge: baseTextTheme.bodyLarge?.copyWith(
         fontSize: 16,
         fontWeight: FontWeight.w400,
-        height: 24 / 16,
+        height: 1.35,
       ),
-      // body-md
-      bodyMedium: GoogleFonts.plusJakartaSans(
+      bodyMedium: baseTextTheme.bodyMedium?.copyWith(
         fontSize: 14,
         fontWeight: FontWeight.w400,
-        height: 20 / 14,
+        height: 1.35,
       ),
-      // label-caps
-      labelSmall: GoogleFonts.plusJakartaSans(
+      titleMedium: baseTextTheme.titleMedium?.copyWith(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        height: 1.3,
+      ),
+      labelSmall: baseTextTheme.labelSmall?.copyWith(
         fontSize: 12,
-        fontWeight: FontWeight.w700,
-        height: 16 / 12,
-        letterSpacing: 0.6, // 0.05em
-      ),
-      // data-tabular
-      titleSmall: GoogleFonts.plusJakartaSans(
-        fontSize: 15,
         fontWeight: FontWeight.w500,
-        height: 20 / 15,
-        fontFeatures: const [FontFeature.tabularFigures()],
+        letterSpacing: 0.8,
+        height: 1.33,
+      ),
+      titleSmall: baseTextTheme.titleSmall?.copyWith(
+        fontSize: 15,
+        fontWeight: FontWeight.w600,
+        height: 1.3,
       ),
     );
 
@@ -117,10 +114,59 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       colorScheme: colorScheme,
-      fontFamily: GoogleFonts.plusJakartaSans().fontFamily,
       textTheme: textTheme,
+      scaffoldBackgroundColor: colorScheme.surface,
+      appBarTheme: AppBarTheme(
+        elevation: 0,
+        scrolledUnderElevation: 0,
+        centerTitle: true,
+        backgroundColor: colorScheme.surface,
+        foregroundColor: colorScheme.onSurface,
+        surfaceTintColor: Colors.transparent,
+        titleTextStyle: textTheme.headlineMedium?.copyWith(
+          color: colorScheme.onSurface,
+          fontWeight: FontWeight.w700,
+        ),
+        iconTheme: IconThemeData(color: colorScheme.onSurface),
+      ),
+      navigationBarTheme: NavigationBarThemeData(
+        elevation: 0,
+        height: 72,
+        backgroundColor: surfaceNav,
+        indicatorColor: colorScheme.primary.withValues(alpha: 0.18),
+        surfaceTintColor: Colors.transparent,
+        labelTextStyle: WidgetStateProperty.resolveWith((states) {
+          final selected = states.contains(WidgetState.selected);
+          return textTheme.labelSmall?.copyWith(
+            fontSize: 12,
+            fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+            color: selected
+                ? colorScheme.primary
+                : colorScheme.onSurfaceVariant,
+          );
+        }),
+        iconTheme: WidgetStateProperty.resolveWith((states) {
+          final selected = states.contains(WidgetState.selected);
+          return IconThemeData(
+            color: selected ? colorScheme.primary : colorScheme.onSurface,
+            size: 24,
+          );
+        }),
+      ),
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: colorScheme.surfaceContainerLowest,
+        foregroundColor: colorScheme.primary,
+        elevation: 3,
+        shape: const CircleBorder(),
+      ),
+      dividerTheme: DividerThemeData(
+        color: colorScheme.outlineVariant.withValues(alpha: 0.7),
+        thickness: 1,
+        space: 1,
+      ),
       cardTheme: CardThemeData(
         color: colorScheme.surfaceContainerLowest,
+        surfaceTintColor: Colors.transparent,
         shape: rounded16,
         elevation: 0,
       ),

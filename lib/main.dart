@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Six Figures',
       theme: AppTheme.light,
       home: const SereneLedgerShell(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
