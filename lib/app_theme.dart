@@ -1,65 +1,115 @@
 import 'package:flutter/material.dart';
 
+/// Canonical colours for Six Figures. Extend here as the palette grows.
+abstract final class AppPalette {
+  AppPalette._();
+
+  /// BG1 — cards, list rows, FAB surface, dialogs.
+  static const Color bg1 = Color(0xFFFFFFFF);
+
+  /// BG2 — page / scaffold / app bar.
+  static const Color bg2 = Color(0xFFF7F6F3);
+
+  /// BG3 — bottom navigation, muted chips on cards.
+  static const Color bg3 = Color(0xFFEBE7E4);
+
+  static const Color primary = Color(0xFFE91E63);
+  static const Color onPrimary = Color(0xFFFFFFFF);
+  static const Color primaryContainer = Color(0xFFFCE4EC);
+  static const Color onPrimaryContainer = Color(0xFF880E4F);
+  static const Color primaryFixedDim = Color(0xFFF8BBD0);
+  static const Color onPrimaryFixed = Color(0xFF4A0020);
+  static const Color onPrimaryFixedVariant = Color(0xFFAD1457);
+
+  static const Color onSurface = Color(0xFF1A1A1A);
+  static const Color onSurfaceVariant = Color(0xFF6B6B6B);
+
+  static const Color secondary = Color(0xFF5C5C5C);
+  static const Color onSecondary = Color(0xFFFFFFFF);
+  static const Color onSecondaryContainer = Color(0xFF2C2C2C);
+
+  static const Color tertiary = Color(0xFF6D6D6D);
+  static const Color onTertiary = Color(0xFFFFFFFF);
+
+  static const Color outline = Color(0xFFBDB5AD);
+  static const Color outlineVariant = Color(0xFFE0D8CE);
+
+  static const Color error = Color(0xFFBA1A1A);
+  static const Color onError = Color(0xFFFFFFFF);
+  static const Color errorContainer = Color(0xFFFFDAD6);
+  static const Color onErrorContainer = Color(0xFF93000A);
+
+  static const Color inverseSurface = Color(0xFF2C2C2C);
+  static const Color onInverseSurface = Color(0xFFF5F5F5);
+  static const Color inversePrimary = Color(0xFFF48FB1);
+
+  static const Color shadow = Color(0x1A000000);
+  static const Color scrim = Color(0x66000000);
+
+  // —— Category icon disks (entries & pickers) ——
+  static const Color categoryTransport = Color(0xFFE65100);
+  static const Color categoryFood = Color(0xFF00897B);
+  static const Color categoryDrinks = Color(0xFF1E88E5);
+  static const Color categoryShopping = Color(0xFF2E7D32);
+  static const Color categoryFun = Color(0xFF5C6BC0);
+  static const Color categoryHealth = Color(0xFFC62828);
+  static const Color categoryUtilities = Color(0xFFFFB300);
+  static const Color categoryHousing = Color(0xFF6D4C41);
+  static const Color categoryUnknown = Color(0xFFB0BEC5);
+}
+
 class AppTheme {
   AppTheme._();
 
-  /// Warm bone surfaces + pink accent (Entries reference / TravelSpend-like).
   static ThemeData get light {
-    const accentPink = Color(0xFFE91E63);
-    const surfaceWarm = Color(0xFFF7F4EF);
-    const surfaceNav = Color(0xFFF0E8E6);
-    const surfaceBand = Color(0xFFEAE6DF);
-    const onSurfaceMain = Color(0xFF1A1A1A);
-    const onSurfaceMuted = Color(0xFF6B6B6B);
-
     final colorScheme = ColorScheme(
       brightness: Brightness.light,
-      primary: accentPink,
-      onPrimary: Colors.white,
-      primaryContainer: Color(0xFFFCE4EC),
-      onPrimaryContainer: Color(0xFF880E4F),
-      secondary: Color(0xFF5C5C5C),
-      onSecondary: Colors.white,
-      secondaryContainer: Color(0xFFE8E8E8),
-      onSecondaryContainer: Color(0xFF2C2C2C),
-      tertiary: Color(0xFF6D6D6D),
-      onTertiary: Colors.white,
-      tertiaryContainer: surfaceBand,
-      onTertiaryContainer: onSurfaceMain,
-      error: Color(0xFFBA1A1A),
-      onError: Colors.white,
-      errorContainer: Color(0xFFFFDAD6),
-      onErrorContainer: Color(0xFF93000A),
-      surface: surfaceWarm,
-      onSurface: onSurfaceMain,
-      onSurfaceVariant: onSurfaceMuted,
-      outline: Color(0xFFBDB5AD),
-      outlineVariant: Color(0xFFE0D8CE),
-      shadow: Color(0x1A000000),
-      scrim: Color(0x66000000),
-      inverseSurface: Color(0xFF2C2C2C),
-      onInverseSurface: Color(0xFFF5F5F5),
-      inversePrimary: Color(0xFFF48FB1),
+      primary: AppPalette.primary,
+      onPrimary: AppPalette.onPrimary,
+      primaryContainer: AppPalette.primaryContainer,
+      onPrimaryContainer: AppPalette.onPrimaryContainer,
+      secondary: AppPalette.secondary,
+      onSecondary: AppPalette.onSecondary,
+      secondaryContainer: AppPalette.bg3,
+      onSecondaryContainer: AppPalette.onSecondaryContainer,
+      tertiary: AppPalette.tertiary,
+      onTertiary: AppPalette.onTertiary,
+      tertiaryContainer: AppPalette.bg2,
+      onTertiaryContainer: AppPalette.onSurface,
+      error: AppPalette.error,
+      onError: AppPalette.onError,
+      errorContainer: AppPalette.errorContainer,
+      onErrorContainer: AppPalette.onErrorContainer,
+      surface: AppPalette.bg2,
+      onSurface: AppPalette.onSurface,
+      onSurfaceVariant: AppPalette.onSurfaceVariant,
+      outline: AppPalette.outline,
+      outlineVariant: AppPalette.outlineVariant,
+      shadow: AppPalette.shadow,
+      scrim: AppPalette.scrim,
+      inverseSurface: AppPalette.inverseSurface,
+      onInverseSurface: AppPalette.onInverseSurface,
+      inversePrimary: AppPalette.inversePrimary,
       surfaceTint: Colors.transparent,
-      surfaceDim: Color(0xFFE8E0D8),
-      surfaceBright: Color(0xFFFCFAF6),
-      surfaceContainerLowest: Colors.white,
-      surfaceContainerLow: Color(0xFFF2EDE6),
-      surfaceContainer: Color(0xFFEDE7DF),
-      surfaceContainerHigh: surfaceBand,
-      surfaceContainerHighest: Color(0xFFDED8CF),
-      primaryFixed: Color(0xFFFCE4EC),
-      primaryFixedDim: Color(0xFFF8BBD0),
-      onPrimaryFixed: Color(0xFF4A0020),
-      onPrimaryFixedVariant: Color(0xFFAD1457),
-      secondaryFixed: Color(0xFFE0E0E0),
-      secondaryFixedDim: Color(0xFFBDBDBD),
-      onSecondaryFixed: Color(0xFF1A1A1A),
-      onSecondaryFixedVariant: Color(0xFF424242),
-      tertiaryFixed: surfaceBand,
-      tertiaryFixedDim: Color(0xFFD7D0C6),
-      onTertiaryFixed: onSurfaceMain,
-      onTertiaryFixedVariant: onSurfaceMuted,
+      surfaceDim: AppPalette.bg3,
+      surfaceBright: AppPalette.bg1,
+      surfaceContainerLowest: AppPalette.bg1,
+      surfaceContainerLow: AppPalette.bg3,
+      surfaceContainer: AppPalette.bg3,
+      surfaceContainerHigh: AppPalette.bg3,
+      surfaceContainerHighest: AppPalette.bg3,
+      primaryFixed: AppPalette.primaryContainer,
+      primaryFixedDim: AppPalette.primaryFixedDim,
+      onPrimaryFixed: AppPalette.onPrimaryFixed,
+      onPrimaryFixedVariant: AppPalette.onPrimaryFixedVariant,
+      secondaryFixed: AppPalette.bg3,
+      secondaryFixedDim: AppPalette.outlineVariant,
+      onSecondaryFixed: AppPalette.onSurface,
+      onSecondaryFixedVariant: AppPalette.onSurfaceVariant,
+      tertiaryFixed: AppPalette.bg2,
+      tertiaryFixedDim: AppPalette.bg3,
+      onTertiaryFixed: AppPalette.onSurface,
+      onTertiaryFixedVariant: AppPalette.onSurfaceVariant,
     );
 
     final baseTextTheme = ThemeData(brightness: Brightness.light).textTheme;
@@ -132,7 +182,7 @@ class AppTheme {
       navigationBarTheme: NavigationBarThemeData(
         elevation: 0,
         height: 72,
-        backgroundColor: surfaceNav,
+        backgroundColor: AppPalette.bg3,
         indicatorColor: colorScheme.primary.withValues(alpha: 0.18),
         surfaceTintColor: Colors.transparent,
         labelTextStyle: WidgetStateProperty.resolveWith((states) {

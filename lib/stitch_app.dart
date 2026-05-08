@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import 'app_theme.dart';
 import 'models/expense.dart';
 import 'services/hive_service.dart';
 
@@ -26,7 +27,6 @@ class _SereneLedgerShellState extends State<SereneLedgerShell> {
     final isIOS = theme.platform == TargetPlatform.iOS;
 
     return Scaffold(
-      backgroundColor: colors.surface,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: InkWell(
@@ -188,11 +188,9 @@ class _HomeDashboardScreen extends StatelessWidget {
             if (expenses.isEmpty)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: _TonalCard(
-                  child: Text(
-                    'No expenses yet. Tap + to add your first entry.',
-                    style: theme.textTheme.bodyLarge,
-                  ),
+                child: Text(
+                  'No expenses yet. Tap + to add your first entry.',
+                  style: theme.textTheme.bodyLarge,
                 ),
               )
             else
@@ -960,11 +958,8 @@ class _MetricCard extends StatelessWidget {
     final colors = theme.colorScheme;
     return Container(
       decoration: BoxDecoration(
-        color: colors.surfaceContainerLowest,
+        color: AppPalette.bg1,
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(
-          color: colors.outlineVariant.withValues(alpha: 0.35),
-        ),
         boxShadow: const [
           BoxShadow(
             color: Color(0x0D000000),
@@ -1137,7 +1132,7 @@ class _DaySection extends StatelessWidget {
         Container(
           width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          color: colors.surfaceContainerHigh,
+          color: AppPalette.bg2,
           child: Row(
             children: [
               Expanded(
@@ -1160,13 +1155,29 @@ class _DaySection extends StatelessWidget {
           ),
         ),
         ColoredBox(
-          color: colors.surface,
+          color: AppPalette.bg2,
           child: Column(
             children: [
               for (var i = 0; i < expenses.length; i++) ...[
                 Material(
-                  color: colors.surface,
+                  key: ValueKey<Object?>(
+                    expenses[i].key ??
+                        '${expenses[i].date.millisecondsSinceEpoch}_'
+                        '${expenses[i].amountCents}_'
+                        '${expenses[i].category}_'
+                        '${expenses[i].name}',
+                  ),
+                  color: AppPalette.bg1,
+                  surfaceTintColor: Colors.transparent,
                   child: InkWell(
+                    // Avoid persistent M3 focus/hover overlay (looks "stuck" pressed).
+                    canRequestFocus: false,
+                    overlayColor: WidgetStateProperty.resolveWith((states) {
+                      if (states.contains(WidgetState.pressed)) {
+                        return colors.primary.withValues(alpha: 0.08);
+                      }
+                      return null;
+                    }),
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute<void>(
@@ -1441,37 +1452,36 @@ String _formatRawAmount(int cents) {
 
 Color _categoryIconBackground(String category) {
   switch (category.trim().toLowerCase()) {
-    // Transport / Travel (burnt orange)
     case 'transport':
     case 'travel':
-      return const Color(0xFFE65100);
-
-    // Restaurants / food / dessert (teal)
+    case 'commute':
+      return AppPalette.categoryTransport;
     case 'restaurants':
     case 'restaurant':
     case 'dining':
     case 'food':
     case 'dessert':
     case 'ice cream':
-      return const Color(0xFF00897B);
-
-    // Drinks / coffee (cornflower blue)
+    case 'lunch':
+      return AppPalette.categoryFood;
     case 'drinks':
     case 'drink':
     case 'coffee':
     case 'icetea':
-      return const Color(0xFF1E88E5);
-
-    // Shopping (forest green)
+      return AppPalette.categoryDrinks;
     case 'shopping':
-      return const Color(0xFF2E7D32);
-
-    // Fun / misc
+    case 'groceries':
+      return AppPalette.categoryShopping;
     case 'fun':
-      return const Color(0xFF5C6BC0);
-
+      return AppPalette.categoryFun;
+    case 'health':
+      return AppPalette.categoryHealth;
+    case 'utilities':
+      return AppPalette.categoryUtilities;
+    case 'housing':
+      return AppPalette.categoryHousing;
     default:
-      return const Color(0xFFB0BEC5);
+      return AppPalette.categoryUnknown;
   }
 }
 
