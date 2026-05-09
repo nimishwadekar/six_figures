@@ -167,7 +167,8 @@ class SelectCategoryScreen extends StatelessWidget {
                             crossAxisCount: 3,
                             mainAxisSpacing: 12 * AppUiScale.element,
                             crossAxisSpacing: 12 * AppUiScale.element,
-                            childAspectRatio: 0.9,
+                            mainAxisExtent:
+                                AppUiScale.categoryTileHeight * AppUiScale.element,
                           ),
                           delegate: SliverChildBuilderDelegate(
                             (context, index) =>
@@ -197,7 +198,8 @@ class SelectCategoryScreen extends StatelessWidget {
                             crossAxisCount: 3,
                             mainAxisSpacing: 12 * AppUiScale.element,
                             crossAxisSpacing: 12 * AppUiScale.element,
-                            childAspectRatio: 0.9,
+                            mainAxisExtent:
+                                AppUiScale.categoryTileHeight * AppUiScale.element,
                           ),
                           delegate: SliverChildBuilderDelegate(
                             (context, index) =>

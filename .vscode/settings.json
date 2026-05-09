@@ -1,0 +1,3 @@
+{
+    "dart.flutterRunAdditionalArgs": ["--user-data-dir=.dart_tool/chrome-profile"]
+}

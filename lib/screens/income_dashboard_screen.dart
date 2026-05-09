@@ -32,17 +32,20 @@ class IncomeDashboardScreen extends StatelessWidget {
         final dayKeys = grouped.keys.toList()..sort((a, b) => b.compareTo(a));
 
         final now = DateTime.now();
-        final todayKey = DateTime(now.year, now.month, now.day);
-        final todayCents =
-            grouped[todayKey]?.fold<int>(0, (s, e) => s + e.amountCents) ?? 0;
+        final monthCents = incomes
+            .where(
+              (income) =>
+                  income.date.year == now.year && income.date.month == now.month,
+            )
+            .fold<int>(0, (sum, income) => sum + income.amountCents);
 
         return CustomScrollView(
           slivers: [
             SliverPersistentHeader(
               pinned: true,
               delegate: GlassMetricHeaderDelegate(
-                todayCents: todayCents,
-                summaryTitle: "Today's Income",
+                todayCents: monthCents,
+                summaryTitle: "This Month's Income",
               ),
             ),
             if (incomes.isEmpty)

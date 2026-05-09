@@ -82,6 +82,9 @@ abstract final class AppUiScale {
   /// Multiplies common component sizes (heights, icon sizes, radii, spacing).
   static const double element = 0.9;
 
+  /// Base height for category picker tiles.
+  static const double categoryTileHeight = 126.0;
+
 }
 
 class AppTheme {
