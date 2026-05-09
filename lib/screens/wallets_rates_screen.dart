@@ -14,7 +14,7 @@ class WalletsRatesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return ListView(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.fromLTRB(20, 20, 20, 110),
       children: [
         Text('Wallets & Rates', style: theme.textTheme.headlineLarge),
         Text(
@@ -33,7 +33,7 @@ class WalletsRatesScreen extends StatelessWidget {
               const SizedBox(height: 8),
               Text(
                 '\$12,450.00',
-                style: theme.textTheme.displayLarge?.copyWith(fontSize: 32),
+                style: theme.textTheme.displayLarge?.copyWith(fontSize: 26),
               ),
               const SizedBox(height: 12),
               Row(

@@ -1,13 +1,15 @@
 // Top-level navigation shell. Hosts the app bar, the bottom navigation bar
-// and the floating action button, switching between the four primary
-// screens (Home, Daily Log, Wallets, Tags) via an IndexedStack.
+// and the floating action button, switching primary screens via IndexedStack.
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'app_theme.dart';
 import 'screens/add_expense_screen.dart';
+import 'screens/add_income_screen.dart';
 import 'screens/daily_log_screen.dart';
 import 'screens/home_dashboard_screen.dart';
+import 'screens/income_dashboard_screen.dart';
 import 'screens/select_category_screen.dart';
 import 'screens/settings_screen.dart';
 import 'screens/tags_screen.dart';
@@ -21,6 +23,9 @@ class SereneLedgerShell extends StatefulWidget {
 }
 
 class _SereneLedgerShellState extends State<SereneLedgerShell> {
+  static const int _expenseTab = 0;
+  static const int _incomeTab = 1;
+
   int _currentIndex = 0;
 
   @override
@@ -30,6 +35,7 @@ class _SereneLedgerShellState extends State<SereneLedgerShell> {
     final isIOS = theme.platform == TargetPlatform.iOS;
 
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: InkWell(
@@ -78,31 +84,55 @@ class _SereneLedgerShellState extends State<SereneLedgerShell> {
           index: _currentIndex,
           children: const [
             HomeDashboardScreen(),
+            IncomeDashboardScreen(),
             DailyLogScreen(),
             WalletsRatesScreen(),
             TagsScreen(),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          final selectedCategory = await Navigator.of(context).push<String>(
-            MaterialPageRoute<String>(
-              builder: (_) => const SelectCategoryScreen(),
-            ),
-          );
-          if (!context.mounted || selectedCategory == null) {
-            return;
-          }
-          Navigator.of(context).push(
-            MaterialPageRoute<void>(
-              builder: (_) =>
-                  AddExpenseScreen(initialCategory: selectedCategory),
-            ),
-          );
-        },
-        child: Icon(isIOS ? CupertinoIcons.add : Icons.add),
-      ),
+      floatingActionButton:
+          (_currentIndex == _expenseTab || _currentIndex == _incomeTab)
+              ? _LedgerFab(
+                  label: _currentIndex == _expenseTab
+                      ? '+ Add Expense'
+                      : '+ Add Income',
+                  onTap: () async {
+                    final selectedCategory =
+                        await Navigator.of(context).push<String>(
+                      MaterialPageRoute<String>(
+                        builder: (_) => SelectCategoryScreen(
+                          mode: _currentIndex == _expenseTab
+                              ? CategoryPickerMode.expense
+                              : CategoryPickerMode.income,
+                        ),
+                      ),
+                    );
+                    if (!context.mounted || selectedCategory == null) {
+                      return;
+                    }
+                    if (_currentIndex == _expenseTab) {
+                      await Navigator.of(context).push<void>(
+                        MaterialPageRoute<void>(
+                          builder: (_) => AddExpenseScreen(
+                            initialCategory: selectedCategory,
+                          ),
+                        ),
+                      );
+                    } else {
+                      await Navigator.of(context).push<void>(
+                        MaterialPageRoute<void>(
+                          builder: (_) => AddIncomeScreen(
+                            initialCategory: selectedCategory,
+                          ),
+                        ),
+                      );
+                    }
+                  },
+                  theme: theme,
+                  colors: colors,
+                )
+              : null,
       bottomNavigationBar: NavigationBar(
         selectedIndex: _currentIndex,
         onDestinationSelected: (value) => setState(() => _currentIndex = value),
@@ -110,7 +140,12 @@ class _SereneLedgerShellState extends State<SereneLedgerShell> {
           NavigationDestination(
             icon: Icon(Icons.receipt_long_outlined),
             selectedIcon: Icon(Icons.receipt_long),
-            label: 'Entries',
+            label: 'Expense',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.trending_up_outlined),
+            selectedIcon: Icon(Icons.trending_up),
+            label: 'Income',
           ),
           NavigationDestination(
             icon: Icon(Icons.bar_chart_outlined),
@@ -128,6 +163,56 @@ class _SereneLedgerShellState extends State<SereneLedgerShell> {
             label: 'Search',
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _LedgerFab extends StatelessWidget {
+  const _LedgerFab({
+    required this.label,
+    required this.onTap,
+    required this.theme,
+    required this.colors,
+  });
+
+  final String label;
+  final VoidCallback onTap;
+  final ThemeData theme;
+  final ColorScheme colors;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(28),
+        boxShadow: [
+          BoxShadow(
+            color: AppPalette.sapphireAccent.withValues(alpha: 0.42),
+            blurRadius: 20,
+            spreadRadius: 1,
+            offset: const Offset(0, 6),
+          ),
+        ],
+      ),
+      child: Material(
+        color: colors.primary,
+        borderRadius: BorderRadius.circular(28),
+        elevation: 0,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(28),
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 16),
+            child: Text(
+              label,
+              style: theme.textTheme.titleSmall?.copyWith(
+                color: colors.onPrimary,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

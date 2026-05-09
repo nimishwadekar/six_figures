@@ -10,9 +10,10 @@ class CurrencyAmountTypographic extends StatelessWidget {
     super.key,
     required this.cents,
     required this.currencyCode,
-    this.wholeFontSize = 22,
-    this.fractionFontSize = 14,
+    this.wholeFontSize = 19,
+    this.fractionFontSize = 12,
     this.mainAxisAlignment = MainAxisAlignment.center,
+    this.monospace = false,
   });
 
   final int cents;
@@ -20,6 +21,7 @@ class CurrencyAmountTypographic extends StatelessWidget {
   final double wholeFontSize;
   final double fractionFontSize;
   final MainAxisAlignment mainAxisAlignment;
+  final bool monospace;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +32,7 @@ class CurrencyAmountTypographic extends StatelessWidget {
     final whole = absolute ~/ 100;
     final frac = (absolute % 100).toString().padLeft(2, '0');
     final prefix = isNegative ? '-' : '';
+    final mono = monospace ? 'monospace' : null;
 
     return Row(
       mainAxisAlignment: mainAxisAlignment,
@@ -42,11 +45,13 @@ class CurrencyAmountTypographic extends StatelessWidget {
           style: theme.textTheme.bodyMedium?.copyWith(
             color: colors.onSurfaceVariant,
             fontWeight: FontWeight.w500,
+            fontFamily: mono,
           ),
         ),
         Text(
           '$prefix$whole',
           style: theme.textTheme.titleLarge?.copyWith(
+            fontFamily: mono,
             fontWeight: FontWeight.w700,
             fontSize: wholeFontSize,
             color: colors.onSurface,
@@ -56,7 +61,8 @@ class CurrencyAmountTypographic extends StatelessWidget {
         Text(
           '.$frac',
           style: theme.textTheme.titleMedium?.copyWith(
-            fontWeight: FontWeight.w600,
+            fontFamily: mono,
+            fontWeight: FontWeight.w700,
             fontSize: fractionFontSize,
             color: colors.onSurface,
             height: 1,

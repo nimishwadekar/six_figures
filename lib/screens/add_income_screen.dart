@@ -1,12 +1,9 @@
-// Add/edit expense form. Captures amount, category, date, name and
-// payment-method tag, validates the amount input, and writes the result
-// to the Hive expense box (creating a new entry or updating the one
-// passed in via initialExpense).
+// Add/edit income form. Same fields as Add Expense but persists to incomebox.
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../models/expense.dart';
+import '../models/income.dart';
 import '../services/hive_service.dart';
 import '../utils/amount_format.dart';
 import '../utils/category_icons.dart';
@@ -15,21 +12,21 @@ import '../widgets/action_card.dart';
 import '../widgets/tonal_card.dart';
 import 'select_category_screen.dart';
 
-class AddExpenseScreen extends StatefulWidget {
-  const AddExpenseScreen({
+class AddIncomeScreen extends StatefulWidget {
+  const AddIncomeScreen({
     super.key,
     required this.initialCategory,
-    this.initialExpense,
+    this.initialIncome,
   });
 
   final String initialCategory;
-  final Expense? initialExpense;
+  final Income? initialIncome;
 
   @override
-  State<AddExpenseScreen> createState() => _AddExpenseScreenState();
+  State<AddIncomeScreen> createState() => _AddIncomeScreenState();
 }
 
-class _AddExpenseScreenState extends State<AddExpenseScreen> {
+class _AddIncomeScreenState extends State<AddIncomeScreen> {
   final TextEditingController _amountController = TextEditingController(
     text: '',
   );
@@ -43,19 +40,19 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
   @override
   void initState() {
     super.initState();
-    final initialExpense = widget.initialExpense;
-    _selectedCategory = initialExpense?.category ?? widget.initialCategory;
-    _selectedCurrency = initialExpense?.currency ?? 'CHF';
+    final initialIncome = widget.initialIncome;
+    _selectedCategory = initialIncome?.category ?? widget.initialCategory;
+    _selectedCurrency = initialIncome?.currency ?? 'CHF';
     final now = DateTime.now();
-    final baseDate = initialExpense?.date ?? now;
+    final baseDate = initialIncome?.date ?? now;
     _selectedDate = DateTime(baseDate.year, baseDate.month, baseDate.day);
-    _amountController.text = initialExpense == null
+    _amountController.text = initialIncome == null
         ? ''
-        : formatRawAmount(initialExpense.amountCents);
-    _nameController.text = initialExpense?.name ?? '';
-    _tagController.text = initialExpense?.tag == 'General'
+        : formatRawAmount(initialIncome.amountCents);
+    _nameController.text = initialIncome?.name ?? '';
+    _tagController.text = initialIncome?.tag == 'General'
         ? ''
-        : (initialExpense?.tag ?? '');
+        : (initialIncome?.tag ?? '');
   }
 
   @override
@@ -139,7 +136,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
                 children: [
                   Expanded(
                     child: ActionCard(
-                      icon: expenseIconForCategory(_selectedCategory),
+                      icon: incomeIconForCategory(_selectedCategory),
                       label: 'CATEGORY',
                       value: _selectedCategory,
                       onTap: () {
@@ -147,7 +144,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
                             .push<String>(
                               MaterialPageRoute<String>(
                                 builder: (_) => const SelectCategoryScreen(
-                                  mode: CategoryPickerMode.expense,
+                                  mode: CategoryPickerMode.income,
                                 ),
                               ),
                             )
@@ -216,20 +213,20 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
         bottomNavigationBar: SafeArea(
           minimum: const EdgeInsets.all(20),
           child: FilledButton.icon(
-            onPressed: _saveExpense,
+            onPressed: _saveIncome,
             icon: const Icon(Icons.check_circle),
-            label: const Text('Save Expense'),
+            label: const Text('Save Income'),
           ),
         ),
       ),
     );
   }
 
-  Future<void> _saveExpense() async {
+  Future<void> _saveIncome() async {
     final amountInput = _amountController.text.trim();
     int amountCents;
     try {
-      amountCents = Expense.parseAmountToCents(amountInput);
+      amountCents = Income.parseAmountToCents(amountInput);
     } on FormatException {
       await _showAmountError();
       return;
@@ -239,7 +236,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
       return;
     }
 
-    final expense = Expense(
+    final income = Income(
       date: _selectedDate,
       category: _selectedCategory,
       name: _nameController.text.trim(),
@@ -250,11 +247,11 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
           : _tagController.text.trim(),
     );
 
-    final existingKey = widget.initialExpense?.key;
+    final existingKey = widget.initialIncome?.key;
     if (existingKey != null) {
-      await HiveService.expensesBox.put(existingKey, expense);
+      await HiveService.incomeBox.put(existingKey, income);
     } else {
-      await HiveService.expensesBox.add(expense);
+      await HiveService.incomeBox.add(income);
     }
 
     if (!mounted) {

@@ -14,7 +14,7 @@ class TagsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return ListView(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.fromLTRB(20, 20, 20, 110),
       children: [
         Text('Manage Tags', style: theme.textTheme.headlineLarge),
         Text(

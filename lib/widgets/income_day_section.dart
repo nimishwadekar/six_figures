@@ -1,28 +1,27 @@
-// DaySection: a sticky-style header showing a day label and its total,
-// followed by a list of expense rows for that day. Tapping a row opens
-// AddExpenseScreen pre-filled for editing.
+// IncomeDaySection: same layout as DaySection for expenses, but binds to
+// [Income] and [AddIncomeScreen].
 
 import 'package:flutter/material.dart';
 
 import '../app_theme.dart';
 import '../constants.dart';
-import '../models/expense.dart';
-import '../screens/add_expense_screen.dart';
+import '../models/income.dart';
+import '../screens/add_income_screen.dart';
 import '../utils/category_icons.dart';
-import '../utils/expense_helpers.dart';
+import '../utils/income_helpers.dart';
 import 'currency_amount_typographic.dart';
 
-class DaySection extends StatelessWidget {
-  const DaySection({
+class IncomeDaySection extends StatelessWidget {
+  const IncomeDaySection({
     super.key,
     required this.headerLabel,
     required this.totalCents,
-    required this.expenses,
+    required this.incomes,
   });
 
   final String headerLabel;
   final int totalCents;
-  final List<Expense> expenses;
+  final List<Income> incomes;
 
   @override
   Widget build(BuildContext context) {
@@ -76,14 +75,14 @@ class DaySection extends StatelessWidget {
               color: AppPalette.bg1,
               child: Column(
                 children: [
-                  for (var i = 0; i < expenses.length; i++) ...[
+                  for (var i = 0; i < incomes.length; i++) ...[
                     Material(
                       key: ValueKey<Object?>(
-                        expenses[i].key ??
-                            '${expenses[i].date.millisecondsSinceEpoch}_'
-                            '${expenses[i].amountCents}_'
-                            '${expenses[i].category}_'
-                            '${expenses[i].name}',
+                        incomes[i].key ??
+                            '${incomes[i].date.millisecondsSinceEpoch}_'
+                            '${incomes[i].amountCents}_'
+                            '${incomes[i].category}_'
+                            '${incomes[i].name}',
                       ),
                       color: Colors.transparent,
                       child: InkWell(
@@ -97,9 +96,9 @@ class DaySection extends StatelessWidget {
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute<void>(
-                              builder: (_) => AddExpenseScreen(
-                                initialCategory: expenses[i].category,
-                                initialExpense: expenses[i],
+                              builder: (_) => AddIncomeScreen(
+                                initialCategory: incomes[i].category,
+                                initialIncome: incomes[i],
                               ),
                             ),
                           );
@@ -111,26 +110,28 @@ class DaySection extends StatelessWidget {
                           ),
                           child: Row(
                             children: [
-                              _CategorySoftSquare(category: expenses[i].category),
+                              _IncomeCategorySquare(
+                                  category: incomes[i].category),
                               const SizedBox(width: 12),
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      expenses[i].name.trim().isEmpty
-                                          ? expenses[i].category
-                                          : expenses[i].name,
+                                      incomes[i].name.trim().isEmpty
+                                          ? incomes[i].category
+                                          : incomes[i].name,
                                       style: theme.textTheme.titleMedium
                                           ?.copyWith(
                                         fontWeight: FontWeight.w600,
                                         color: colors.onSurface,
                                       ),
                                     ),
-                                    if (entrySubtitle(expenses[i]) != null) ...[
+                                    if (incomeEntrySubtitle(incomes[i]) !=
+                                        null) ...[
                                       const SizedBox(height: 2),
                                       Text(
-                                        entrySubtitle(expenses[i])!,
+                                        incomeEntrySubtitle(incomes[i])!,
                                         style: theme.textTheme.bodyMedium
                                             ?.copyWith(
                                           color: AppPalette.onSurfaceMuted,
@@ -141,7 +142,7 @@ class DaySection extends StatelessWidget {
                                 ),
                               ),
                               CurrencyAmountTypographic(
-                                cents: expenses[i].amountCents,
+                                cents: incomes[i].amountCents,
                                 currencyCode: kHomeCurrencyCode,
                                 wholeFontSize: 16,
                                 fractionFontSize: 11,
@@ -152,7 +153,7 @@ class DaySection extends StatelessWidget {
                         ),
                       ),
                     ),
-                    if (i < expenses.length - 1)
+                    if (i < incomes.length - 1)
                       Divider(
                         height: 1,
                         indent: 16,
@@ -171,14 +172,14 @@ class DaySection extends StatelessWidget {
   }
 }
 
-class _CategorySoftSquare extends StatelessWidget {
-  const _CategorySoftSquare({required this.category});
+class _IncomeCategorySquare extends StatelessWidget {
+  const _IncomeCategorySquare({required this.category});
 
   final String category;
 
   @override
   Widget build(BuildContext context) {
-    final accent = expenseCategoryIconBackground(category);
+    final accent = incomeCategoryIconBackground(category);
     return Container(
       width: 36,
       height: 36,
@@ -188,7 +189,7 @@ class _CategorySoftSquare extends StatelessWidget {
       ),
       alignment: Alignment.center,
       child: Icon(
-        expenseIconForCategoryOutlined(category),
+        incomeIconForCategoryOutlined(category),
         color: accent,
         size: 20,
       ),

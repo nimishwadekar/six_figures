@@ -40,7 +40,7 @@ class DailyLogScreen extends StatelessWidget {
               ..sort((a, b) => b.compareTo(a));
 
             return ListView(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.fromLTRB(20, 20, 20, 110),
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
